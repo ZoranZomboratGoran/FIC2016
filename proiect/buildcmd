@@ -1,0 +1,2 @@
+g++ -g video.cpp -o video2 `pkg-config --libs /home/cloud/Downloads/git_openCV/cmake_binary_dir/unix-install/opencv.pc`
+
