@@ -3,12 +3,14 @@ nrMov=0
 nrArith=0
 nrJmp=0
 nrOther=0
-movI=( "55" "5d" "88" "89" "8a" "8b" "48" "c7" )
-arithI=( "83" "0f" "3b" )
+movI=( "53" "5b" "55" "5d" "88" "89" "8a" "8b" "48" "c7" )
+arithI=( "83" "0f" "3b" "29" "39" )
 jmpI=( "c3" "eb ""70" "71" "72" "73" "74" "75" "76" "77" "78" "79" "7a" "7b" "7c" "7d" "7e" "7f" ) 
-otherI=()
+otherI=( "00" )
 
-arr=( $( objdump -d -M intel main1.o | grep -P "^.*[0-9abcdef]:" | awk '{print $2}' ))
+
+
+arr=( $( objdump -d -M intel main4.o | grep -P "^.*[0-9abcdef]:" | awk '{print $2}' ))
 
 for v in "${arr[@]}" ;do
 	if [[  " ${movI[*]} " == *" $v "* ]] ; then
