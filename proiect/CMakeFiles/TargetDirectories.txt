@@ -1,1 +1,1 @@
-/home/cloud/zoran/ficgitrepo/FIC2016/proiect/CMakeFiles/video.dir
+/home/cloud/zoran/FIC2016/proiect/CMakeFiles/video.dir

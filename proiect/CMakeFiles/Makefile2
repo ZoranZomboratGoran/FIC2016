@@ -46,11 +46,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cloud/zoran/ficgitrepo/FIC2016/proiect
+CMAKE_SOURCE_DIR = /home/cloud/zoran/FIC2016/proiect
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cloud/zoran/ficgitrepo/FIC2016/proiect
+CMAKE_BINARY_DIR = /home/cloud/zoran/FIC2016/proiect
 
 #=============================================================================
 # Target rules for target CMakeFiles/video.dir
@@ -59,7 +62,7 @@ CMAKE_BINARY_DIR = /home/cloud/zoran/ficgitrepo/FIC2016/proiect
 CMakeFiles/video.dir/all:
 	$(MAKE) -f CMakeFiles/video.dir/build.make CMakeFiles/video.dir/depend
 	$(MAKE) -f CMakeFiles/video.dir/build.make CMakeFiles/video.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/zoran/ficgitrepo/FIC2016/proiect/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cloud/zoran/FIC2016/proiect/CMakeFiles  1
 	@echo "Built target video"
 .PHONY : CMakeFiles/video.dir/all
 
@@ -69,9 +72,9 @@ all: CMakeFiles/video.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/video.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloud/zoran/ficgitrepo/FIC2016/proiect/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloud/zoran/FIC2016/proiect/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/video.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloud/zoran/ficgitrepo/FIC2016/proiect/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cloud/zoran/FIC2016/proiect/CMakeFiles 0
 .PHONY : CMakeFiles/video.dir/rule
 
 # Convenience name for target.
