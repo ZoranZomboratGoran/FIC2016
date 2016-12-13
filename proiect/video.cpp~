@@ -40,7 +40,7 @@ public:
 HSV colors[2];
 RoboPoint players[2];
 
-int state=0;
+int state=1;
 
 
 //default capture width and height
@@ -161,8 +161,8 @@ void socket()
     int portNum = 20231;
     bool isExit = false;
 	int bufsize=9;
-    char buffer[9]={'r','f','s','l','l','s','b','f','s'};
-
+    //char buffer[9]={'r','f','s','l','l','s','b','f','s'};
+	char buffer[9]={'f','f','f','f','f','s','b','f','s'};
 
     struct sockaddr_in server_addr;
     socklen_t size;
@@ -188,11 +188,9 @@ void socket()
 
 
 	for(int i =0 ;i<bufsize;i++){
-//		char tmp[3];
-//		sprintf(tmp, "%c", buffer[i]);
 		printf("Trimit %c\n", buffer[i]);
 	        send(client, &buffer[i], 1, 0);
-		sleep(3);
+		sleep(1);
 	}
 
 
@@ -211,7 +209,7 @@ void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
 	vector< vector<Point> > contours;
 	vector<Vec4i> hierarchy;
 	//find contours of filtered image using openCV findContours function
-	findContours(temp, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+	findContours(temp, contours, hierarchy, RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
 	//use moments method to find our filtered object
 	double refArea = 0;
 	bool objectFound = false;
@@ -275,12 +273,21 @@ void initializeHvs()
 	colors[0].V_MIN = 130;
 	colors[0].V_MAX = 256;
 
-	colors[1].H_MIN = 54;
+	/*colors[1].H_MIN = 54;
 	colors[1].H_MAX = 255;
 	colors[1].S_MIN = 152;
 	colors[1].S_MAX = 255;
 	colors[1].V_MIN = 146;
-	colors[1].V_MAX = 227;
+	colors[1].V_MAX = 227;*/
+	
+	//Negru
+	colors[1].H_MIN = 0;
+	colors[1].H_MAX = 180;
+	colors[1].S_MIN = 0;
+	colors[1].S_MAX = 255;
+	colors[1].V_MIN = 0;
+	colors[1].V_MAX = 142;
+
 }
 
 int main(int argc, char* argv[])
