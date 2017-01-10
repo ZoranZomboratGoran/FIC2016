@@ -209,7 +209,7 @@ void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
 	vector< vector<Point> > contours;
 	vector<Vec4i> hierarchy;
 	//find contours of filtered image using openCV findContours function
-	findContours(temp, contours, hierarchy, RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
+	findContours (temp, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 	//use moments method to find our filtered object
 	double refArea = 0;
 	bool objectFound = false;
@@ -232,8 +232,6 @@ void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
 					objectFound = true;
 					refArea = area;
 				}
-				else objectFound = false;
-
 
 			}
 			//let user know you found an object
@@ -269,24 +267,33 @@ void initializeHvs()
 	colors[0].H_MIN = 89;
 	colors[0].H_MAX = 224;
 	colors[0].S_MIN = 194;
-	colors[0].S_MAX = 256;
+	colors[0].S_MAX = 255;
 	colors[0].V_MIN = 130;
-	colors[0].V_MAX = 256;
+	colors[0].V_MAX = 255;
 
-	/*colors[1].H_MIN = 54;
+	colors[1].H_MIN = 54;
 	colors[1].H_MAX = 255;
 	colors[1].S_MIN = 152;
 	colors[1].S_MAX = 255;
 	colors[1].V_MIN = 146;
-	colors[1].V_MAX = 227;*/
+	colors[1].V_MAX = 227;
 	
-	//Negru
-	colors[1].H_MIN = 0;
-	colors[1].H_MAX = 180;
-	colors[1].S_MIN = 0;
-	colors[1].S_MAX = 255;
-	colors[1].V_MIN = 0;
-	colors[1].V_MAX = 142;
+//	//Negru
+//	colors[1].H_MIN = 0;
+//	colors[1].H_MAX = 180;
+//	colors[1].S_MIN = 0;
+//	colors[1].S_MAX = 255;
+//	colors[1].V_MIN = 0;
+//	colors[1].V_MAX = 142;
+
+//	//Rosu
+//	colors[1].H_MIN = 0;
+//	colors[1].H_MAX = 68;
+//	colors[1].S_MIN = 193;
+//	colors[1].S_MAX = 255;
+//	colors[1].V_MIN = 0;
+//	colors[1].V_MAX = 255;
+
 
 }
 
@@ -294,7 +301,7 @@ int main(int argc, char* argv[])
 {
 
 	initializeHvs();
-	socket();
+	//socket();
 	
 	//some boolean variables for different functionality within this
 	//program
@@ -323,13 +330,13 @@ int main(int argc, char* argv[])
 	//all of our operations will be performed within this loop
 
 
-  
+	capture.read(cameraFeed);
 	
 	while (1) {
 
 
 		//store image to matrix
-		capture.read(cameraFeed);
+//		capture.read(cameraFeed);
 		//convert frame from BGR to HSV colorspace
 		if(cameraFeed.empty())
 			return 1;
